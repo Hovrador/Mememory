@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<images>
+  <image>
+    <title>Ron 1</title>
+    <url>ron_1.jpg</url>
+    <description>First Ron Swanson Image.</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Lime Cat</title>
+    <url>lime_cat.jpg</url>
+    <description>Cat with lime headgear.</description>
+    <genre>Cat</genre>
+  </image>
+  <image>
+    <title>Ron 2</title>
+    <url>ron_2.jpg</url>
+    <description>Second Ron Swanson Image.</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Nonono Cat</title>
+    <url>nonono_cat.jpg</url>
+    <description>Startled cat picture.</description>
+    <genre>Cat</genre>
+  </image>
+  <image>
+    <title>Ron 3</title>
+    <url>ron_3.jpg</url>
+    <description>Third Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Box Man</title>
+    <url>box_man.gif</url>
+    <description>Man escaping group with a box.</description>
+    <genre>Animated</genre>
+  </image>
+  <image>
+    <title>Ron 4</title>
+    <url>ron_4.jpg</url>
+    <description>Forth Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Long Cat</title>
+    <url>long_cat.jpg</url>
+    <description>Image of a long cat.</description>
+    <genre>Cat</genre>
+  </image>
+  <image>
+    <title>Ron 5</title>
+    <url>ron_5.jpg</url>
+    <description>Fifth Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Fire</title>
+    <url>fire.gif</url>
+    <description>Animation of a fire.</description>
+    <genre>Animated</genre>
+  </image>
+  <image>
+    <title>Ron 6</title>
+    <url>ron_6.jpg</url>
+    <description>Sixth Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Grumpy Cat</title>
+    <url>grumpy_cat.jpg</url>
+    <description>A grumpy looking cat.</description>
+    <genre>Cat</genre>
+  </image>
+  <image>
+    <title>Ron 7</title>
+    <url>ron_7.jpg</url>
+    <description>Seventh Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Stare Cat</title>
+    <url>stare_cat.jpg</url>
+    <description>Wide eyed cat stare.</description>
+    <genre>Cat</genre>
+  </image>
+  <image>
+    <title>Ron 8</title>
+    <url>ron_8.jpg</url>
+    <description>Eighth Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Gerbil Spin</title>
+    <url>gerbil.gif</url>
+    <description>Spinning Gerbil</description>
+    <genre>Animated</genre>
+  </image>
+  <image>
+    <title>Ron 9</title>
+    <url>ron_9.jpg</url>
+    <description>Ninth Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Monorail Cat</title>
+    <url>monorail_cat.jpg</url>
+    <description>Cat balancing on a narrow surface.</description>
+    <genre>Cat</genre>
+  </image>
+  <image>
+    <title>Ron 10</title>
+    <url>ron_10.jpg</url>
+    <description>Tenth Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Rainbow Mac</title>
+    <url>mac.gif</url>
+    <description>Mac with rainbow background.</description>
+    <genre>Animated</genre>
+  </image>
+  <image>
+    <title>Ron 11</title>
+    <url>ron_11.jpg</url>
+    <description>Eleventh Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Business Cat</title>
+    <url>business_cat.jpg</url>
+    <description>Cat with a tie.</description>
+    <genre>Cat</genre>
+  </image>
+  <image>
+    <title>Ron 12</title>
+    <url>ron_12.jpg</url>
+    <description>Twelfth Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Happy Cat</title>
+    <url>happy_cat.jpg</url>
+    <description>A happy looking kitty.</description>
+    <genre>Cat</genre>
+  </image>
+  <image>
+    <title>Ron 13</title>
+    <url>ron_13.jpg</url>
+    <description>Thirteenth Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>What is Love</title>
+    <url>what_is_love.gif</url>
+    <description>From the movie "A Night at the Roxbury".</description>
+    <genre>Animated</genre>
+  </image>
+  <image>
+    <title>Ron 14</title>
+    <url>ron_14.jpg</url>
+    <description>Fourteenth Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Serious Cat</title>
+    <url>serious_cat.jpg</url>
+    <description>A stern cat.</description>
+    <genre>Cat</genre>
+  </image>
+  <image>
+    <title>Ron 15</title>
+    <url>ron_15.jpg</url>
+    <description>Fifteenth Ron Swanson Image</description>
+    <genre>Ron Swanson</genre>
+  </image>
+  <image>
+    <title>Raccoon Harp</title>
+    <url>raccoon_harp.gif</url>
+    <description>Raccoon playing with sprinkler like a harp.</description>
+    <genre>Animated</genre>
+  </image>
+</images>
