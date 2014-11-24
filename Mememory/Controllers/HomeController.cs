@@ -14,7 +14,7 @@ namespace Mememory.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View(new ImageModel());
         }
 
         public ActionResult About()

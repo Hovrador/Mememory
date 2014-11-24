@@ -11,7 +11,7 @@ namespace Mememory.Models
     {
         public ImageModel()
         {
-            string imagesDir = HttpContext.Current.Server.MapPath("~/Images/");
+            string imagesDir = HttpContext.Current.Server.MapPath("~/App_Data/");
             XDocument imagesMetaData = XDocument.Load(imagesDir + @"/ImagesMetaData.xml");
             var images = from image in imagesMetaData.Descendants("image")
                          select new UploadModel(image.Element("title").Value,
