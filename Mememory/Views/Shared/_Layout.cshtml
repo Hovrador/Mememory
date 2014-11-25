@@ -28,9 +28,10 @@
                             Filter <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Cat</a></li>
-                            <li><a href="#">Ron Swanson</a></li>
-                            <li><a href="#">Animated</a></li>
+                            <li><a id="show_all" href="#">Show All</a></li>
+                            <li><a id="show_cat" href="#">Cat</a></li>
+                            <li><a id="show_ron" href="#">Ron Swanson</a></li>
+                            <li><a id="show_animated" href="#">Animated</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -52,5 +53,31 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        $("#show_all").click(function () {
+            $(".Ron").show();
+            $(".Cat").show();
+            $(".Animated").show();
+
+        });
+        $("#show_ron").click(function () {
+            $(".Ron").show();
+            $(".Cat").hide();
+            $(".Animated").hide();
+            
+        });
+        $("#show_cat").click(function () {
+            $(".Ron").hide();
+            $(".Cat").show();
+            $(".Animated").hide();
+
+        });
+        $("#show_animated").click(function () {
+            $(".Ron").hide();
+            $(".Cat").hide();
+            $(".Animated").show();
+
+        });
+    </script>
 </body>
 </html>
