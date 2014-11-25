@@ -7,8 +7,17 @@
 
         @foreach (var image in Model)
         {
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="../../Images/@image.url "><img src="../../Images/@image.url " height="200" width="200" /></a>
+            
+                <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="image-box">
+                        <div>
+                            <a href="../../Images/@image.url "><img class="image-frame" alt="@image.title" src="../../Images/@image.url " /></a>
+                        </div>
+                        <div class="title-box">
+                            <p>@image.title</p>
+                            <p>@image.description</p>
+                        </div>
+                    </div>
             </div>
         }
 </div>
