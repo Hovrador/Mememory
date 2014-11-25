@@ -28,10 +28,10 @@
                             Filter <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a id="show_all" href="#">Show All</a></li>
-                            <li><a id="show_cat" href="#">Cat</a></li>
-                            <li><a id="show_ron" href="#">Ron Swanson</a></li>
-                            <li><a id="show_animated" href="#">Animated</a></li>
+                            <li><a id="show-all" href="#">Show All</a></li>
+                            <li><a id="show-cat" href="#">Cat</a></li>
+                            <li><a id="show-ron" href="#">Ron Swanson</a></li>
+                            <li><a id="show-animated" href="#">Animated</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -54,29 +54,33 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script>
-        $("#show_all").click(function () {
+        $("#show-all").click(function () {
             $(".Ron").show();
             $(".Cat").show();
             $(".Animated").show();
 
         });
-        $("#show_ron").click(function () {
+        $("#show-ron").click(function () {
             $(".Ron").show();
             $(".Cat").hide();
             $(".Animated").hide();
             
         });
-        $("#show_cat").click(function () {
+        $("#show-cat").click(function () {
             $(".Ron").hide();
             $(".Cat").show();
             $(".Animated").hide();
 
         });
-        $("#show_animated").click(function () {
+        $("#show-animated").click(function () {
             $(".Ron").hide();
             $(".Cat").hide();
             $(".Animated").show();
 
+        });
+
+        $('.remove-image').click(function () {
+            $(this).closest('.image-unit').remove();
         });
     </script>
 </body>
