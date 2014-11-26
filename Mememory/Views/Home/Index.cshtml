@@ -4,12 +4,10 @@
 
 <div class="row" id="main-content">
     @model Mememory.Models.ImageModel
-
         @foreach (var image in Model)
         {
 
-            <div class="@image.genre col-xs-12 col-sm-6 col-md-4 col-lg-3 image-unit">
-                
+            <div class="@image.genre col-xs-12 col-sm-6 col-md-4 col-lg-3 image-unit">                
                 <div class="image-box">
                     <div class="image-header">
                         <p>@image.title</p><a class="remove-image" href="#">Delete</a>
@@ -18,8 +16,7 @@
                     <div class="title-box">
                         <p>@image.description</p>
                     </div>
-                </div>
-                
+                </div>                
             </div>
         }
 </div>

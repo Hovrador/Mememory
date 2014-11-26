@@ -6,6 +6,7 @@
     height              : 320px;
     width               : 210px;
 }
+
 .image-header {
     background-image: -webkit-gradient(
 	    linear,
@@ -24,6 +25,7 @@
     border-top-left-radius:16px;
     border-top-right-radius:16px;
 }
+
 .image-header p{
     margin-top:6px;
     margin-left:8px;
@@ -47,9 +49,11 @@
     height          : 200px;
     width           : 100%;
 }
+
 .image-frame img{
     margin:0;
 }
+
 .title-box{
     margin-top      : 10px;
     margin-left     : 5px;

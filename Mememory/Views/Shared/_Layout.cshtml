@@ -39,7 +39,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li><a id="uploadLink" href="#upload" data-toggle="modal">Upload</a></li>
                 </ul>
-</div>
+            </div>
         </div>
     </div>
     <div class="container body-content">
@@ -50,6 +50,8 @@
             <p>&copy; @DateTime.Now.Year - Hovrador ASP.NET Application</p>
         </footer>
     </div>
+
+    <!--Modal for form to upload images-->
     <div class="modal fade" id="upload" role="dialog">
         <div class=" modal-dialog">
             <div class="modal-content">
@@ -91,44 +93,63 @@
         </div>        
     </div>
 
+    <!--Modal for individual picture view-->
     <div class="modal fade" id="modal-image" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body modal-center">
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+            </div>
+        </div>
+    </div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script>
         $(document).ready(function () {
-            $("#show-all").click(function () {
+            //--------------------------------------------------------------------------------
+            //This section handles filtering
+            var genreSelect = "";
+
+            function showAllImg() {
                 $(".Ron").show();
                 $(".Cat").show();
                 $(".Animated").show();
+                genreSelect = "All";
+            }
 
-            });
-            $("#show-ron").click(function () {
-                $(".Ron").show();
-                $(".Cat").hide();
-                $(".Animated").hide();
-
-            });
-            $("#show-cat").click(function () {
+            function showAllCat() {
                 $(".Ron").hide();
                 $(".Cat").show();
                 $(".Animated").hide();
+                genreSelect = "Cat";
+            }
 
-            });
-            $("#show-animated").click(function () {
+            function showAllRon() {
+                $(".Ron").show();
+                $(".Cat").hide();
+                $(".Animated").hide();
+                genreSelect = "Ron";
+            }
+        
+            function showAllAnimated() {
                 $(".Ron").hide();
                 $(".Cat").hide();
                 $(".Animated").show();
+                genreSelect = "Animated";
+            }
 
-            });
+            $("#show-all").click(showAllImg);
 
+            $("#show-ron").click(showAllRon);
+
+            $("#show-cat").click(showAllCat);
+
+            $("#show-animated").click(showAllAnimated);
+
+            //--------------------------------------------------------------------------------
+            //This function is for individual picture viewing
             function imageLink() {
                 var src = $(this).attr('src');
                 var img = '<img src="' + src + '" class="img-responsive"/>';
@@ -141,12 +162,19 @@
                 });
             }
 
+            $('.image-frame').on('click', imageLink);
+
+            //--------------------------------------------------------------------------------
+            //This function is for removing an image from the DOM
+
             function removeImage() {
                 $(this).closest('.image-unit').remove();
             }
-
+                        
             $('.remove-image').click(removeImage);
-            $('.image-frame').on('click', imageLink);
+
+            //--------------------------------------------------------------------------------
+            //This section is for uploading a new image to the DOM and activating its controls
 
             $('#upload-submit').click(function () {
                 var title = $('#title').val(),
@@ -169,16 +197,26 @@
                             </div>                                                                                          \
                         </div>                                                                                              \
                     </div>'
-                );
+                ).removeClass('hide');
+
                 $('.remove-image').on("click", removeImage);
+
                 $('.image-frame').on("click", imageLink);
+
+                if (genre !== genreSelect) {
+                    if (genreSelect === "Cat") {
+                        showAllCat();
+                    }
+                    if (genreSelect === "Ron") {
+                        showAllRon();
+                    }
+                    if (genreSelect === "Animated") {
+                        showAllAnimated();
+                    }
+                }
                 $('#upload').modal('hide');
             });
-
-
         });
     </script>
-
-    
 </body>
 </html>
