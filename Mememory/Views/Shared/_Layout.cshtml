@@ -37,7 +37,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li><a id="uploadLink" href="#">Upload</a></li>
+                    <li><a id="uploadLink" href="#upload" data-toggle="modal">Upload</a></li>
                 </ul>
 </div>
         </div>
@@ -45,11 +45,51 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+
         <footer>
             <p>&copy; @DateTime.Now.Year - Hovrador ASP.NET Application</p>
         </footer>
     </div>
-
+    <div class="modal fade" id="upload" role="dialog">
+        <div class=" modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Upload Image</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row-fluid">
+                        <p class="validateTips">All form fields are required.</p>
+                        <form id="upload-form" role="form">
+                            <div class="form-group">
+                                <label for="title">Title:</label>
+                                <input type="text" class="form-control" id="title" value="Cat">
+                            </div>
+                            <div class="form-group">
+                                <label for="url">URL:</label>
+                                <input type="url" class="form-control" id="url" value="http://i3.kym-cdn.com/entries/icons/original/000/007/263/photo_cat2.jpg">
+                            </div>
+                            <div class="form-group">
+                                <label for="discription">Discription:</label>
+                                <input type="text" class="form-control" id="description" value="Cat">
+                            </div>
+                            <div class="form-group">
+                                <label for="genre">Genre:</label>
+                                <select class="form-control" id="genre">
+                                    <option>Cat</option>
+                                    <option>Ron</option>
+                                    <option>Animated</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn" data-dismiss="modal">Close</a>
+                    <a href="#" class="btn btn-primary" id="upload-submit">Save Changes</a>
+                </div>
+            </div>
+        </div>        
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
@@ -64,7 +104,7 @@
             $(".Ron").show();
             $(".Cat").hide();
             $(".Animated").hide();
-            
+
         });
         $("#show-cat").click(function () {
             $(".Ron").hide();
@@ -82,6 +122,105 @@
         $('.remove-image').click(function () {
             $(this).closest('.image-unit').remove();
         });
+        $('#upload-submit').click(function () {
+            var title = $('#title').val(),
+            url = $('#url').val(),
+            description = $('#description').val(),
+            genre = $('#genre').val();
+            
+            $('#main-content').append('                                                                                                          \
+                <div class="' + genre + ' col-xs-12 col-sm-6 col-md-4 col-lg-3 image-unit">                                                              \
+                                                                                                                                                        \
+                <div class="image-box">                                                                                                                 \
+                    <a class="remove-image" href="#">Delete</a>                                                                                         \
+                    <div>                                                                                                                               \
+                        <a href="'+url+'"><img class="image-frame" alt="' + title + '" src="'+url+'" /></a>         \
+                    </div>                                                                                                                              \
+                    <div class="title-box">                                                                                                             \
+                        <p>' + title + '</p>                                                                                                              \
+                        <p>' + genre + '</p>                                                                                                              \
+                    </div>                                                                                                                              \
+                </div>                                                                                                                                  \
+                                                                                                                                                        \
+            </div>'
+                );
+            $('#upload').modal('hide');
+        });
+        $(function () {
+            var dialog, form,
+              title = $("#title"),
+              url = $("#url"),
+              description = $("#description"),
+              genre = $("#genre"),
+              allFields = $([]).add(title).add(url).add(description).add(genre),
+              tips = $(".validateTips");
+
+            function updateTips(t) {
+                tips
+                  .text(t)
+                  .addClass("ui-state-highlight");
+                setTimeout(function () {
+                    tips.removeClass("ui-state-highlight", 1500);
+                }, 500);
+            }
+
+            function checkLength(o, n, min, max) {
+                if (o.val().length > max || o.val().length < min) {
+                    o.addClass("ui-state-error");
+                    updateTips("Length of " + n + " must be between " +
+                      min + " and " + max + ".");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            function checkRegexp(o, regexp, n) {
+                if (!(regexp.test(o.val()))) {
+                    o.addClass("ui-state-error");
+                    updateTips(n);
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            function addUser() {
+                var valid = true;
+                allFields.removeClass("ui-state-error");
+
+                valid = valid && checkLength(title, "title", 3, 16);
+                valid = valid && checkLength(url, "url", 6, 80);
+                valid = valid && checkLength(description, "description", 0, 16);
+
+                valid = valid && checkRegexp(title, /^[a-z]([0-9a-z_\s])+$/i, "Title may consist of a-z, 0-9, underscores, spaces and must begin with a letter.");
+                valid = valid && checkRegexp(description,/^[a-z]([0-9a-z_\s])+$/i, "Description may consist of a-z, 0-9, underscores, spaces and must begin with a letter.");
+
+                if (valid) {
+                    $('main-content').append('                                                                                                          \
+                <div class="' + varG + ' col-xs-12 col-sm-6 col-md-4 col-lg-3 image-unit">                                                              \
+                                                                                                                                                        \
+                <div class="image-box">                                                                                                                 \
+                    <a class="remove-image" href="#">Delete</a>                                                                                         \
+                    <div>                                                                                                                               \
+                        <a href="../../Images/'+ varU + ' "><img class="image-frame" alt="' + varT + '" src="../../Images/' + varU + ' " /></a>         \
+                    </div>                                                                                                                              \
+                    <div class="title-box">                                                                                                             \
+                        <p>'+ varT + '</p>                                                                                                              \
+                        <p>'+ varG + '</p>                                                                                                              \
+                    </div>                                                                                                                              \
+                </div>                                                                                                                                  \
+                                                                                                                                                        \
+            </div>'
+                );
+                    dialog.dialog("close");
+                }
+                return valid;
+            }
+        });
+
     </script>
+
+    
 </body>
 </html>
