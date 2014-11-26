@@ -62,7 +62,7 @@
                         <form id="upload-form" role="form">
                             <div class="form-group">
                                 <label for="title">Title:</label>
-                                <input type="text" class="form-control" id="title" value="Cat">
+                                <input type="text" class="form-control" id="title" value="Basic Cat">
                             </div>
                             <div class="form-group">
                                 <label for="url">URL:</label>
@@ -70,7 +70,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="discription">Discription:</label>
-                                <input type="text" class="form-control" id="description" value="Cat">
+                                <input type="text" class="form-control" id="description" value="A sample picture of a cat">
                             </div>
                             <div class="form-group">
                                 <label for="genre">Genre:</label>
@@ -90,135 +90,93 @@
             </div>
         </div>        
     </div>
+
+    <div class="modal fade" id="modal-image" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body modal-center">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script>
-        $("#show-all").click(function () {
-            $(".Ron").show();
-            $(".Cat").show();
-            $(".Animated").show();
+        $(document).ready(function () {
+            $("#show-all").click(function () {
+                $(".Ron").show();
+                $(".Cat").show();
+                $(".Animated").show();
 
-        });
-        $("#show-ron").click(function () {
-            $(".Ron").show();
-            $(".Cat").hide();
-            $(".Animated").hide();
+            });
+            $("#show-ron").click(function () {
+                $(".Ron").show();
+                $(".Cat").hide();
+                $(".Animated").hide();
 
-        });
-        $("#show-cat").click(function () {
-            $(".Ron").hide();
-            $(".Cat").show();
-            $(".Animated").hide();
+            });
+            $("#show-cat").click(function () {
+                $(".Ron").hide();
+                $(".Cat").show();
+                $(".Animated").hide();
 
-        });
-        $("#show-animated").click(function () {
-            $(".Ron").hide();
-            $(".Cat").hide();
-            $(".Animated").show();
+            });
+            $("#show-animated").click(function () {
+                $(".Ron").hide();
+                $(".Cat").hide();
+                $(".Animated").show();
 
-        });
+            });
 
-        $('.remove-image').click(function () {
-            $(this).closest('.image-unit').remove();
-        });
-        $('#upload-submit').click(function () {
-            var title = $('#title').val(),
-            url = $('#url').val(),
-            description = $('#description').val(),
-            genre = $('#genre').val();
-            
-            $('#main-content').append('                                                                                                          \
-                <div class="' + genre + ' col-xs-12 col-sm-6 col-md-4 col-lg-3 image-unit">                                                              \
-                                                                                                                                                        \
-                <div class="image-box">                                                                                                                 \
-                    <a class="remove-image" href="#">Delete</a>                                                                                         \
-                    <div>                                                                                                                               \
-                        <a href="'+url+'"><img class="image-frame" alt="' + title + '" src="'+url+'" /></a>         \
-                    </div>                                                                                                                              \
-                    <div class="title-box">                                                                                                             \
-                        <p>' + title + '</p>                                                                                                              \
-                        <p>' + genre + '</p>                                                                                                              \
-                    </div>                                                                                                                              \
-                </div>                                                                                                                                  \
-                                                                                                                                                        \
-            </div>'
+            function imageLink() {
+                var src = $(this).attr('src');
+                var img = '<img src="' + src + '" class="img-responsive"/>';
+                $('#modal-image').modal();
+                $('#modal-image').on('shown.bs.modal', function () {
+                    $('#modal-image .modal-body').html(img);
+                });
+                $('#modal-image').on('hidden.bs.modal', function () {
+                    $('#modal-image .modal-body').html('');
+                });
+            }
+
+            function removeImage() {
+                $(this).closest('.image-unit').remove();
+            }
+
+            $('.remove-image').click(removeImage);
+            $('.image-frame').on('click', imageLink);
+
+            $('#upload-submit').click(function () {
+                var title = $('#title').val(),
+                url = $('#url').val(),
+                description = $('#description').val(),
+                genre = $('#genre').val();
+
+                $('#main-content').append('                                                                                 \
+                    <div class="' + genre + ' col-xs-12 col-sm-6 col-md-4 col-lg-3 image-unit">                             \
+                        <div class="image-box">                                                                             \
+                            <div class="image-header">                                                                      \
+                                <p>' + title + '</p><a class="remove-image" href="#">Delete</a>                             \
+                            </div>                                                                                          \
+                            <div>                                                                                           \
+                                <img class="image-frame" alt="' + title + '" src="' + url + '" />                           \
+                            </div>                                                                                          \
+                            <div class="title-box">                                                                         \
+                                <p>' + title + '</p>                                                                        \
+                                <p>' + description + '</p>                                                                  \
+                            </div>                                                                                          \
+                        </div>                                                                                              \
+                    </div>'
                 );
-            $('#upload').modal('hide');
+                $('.remove-image').on("click", removeImage);
+                $('.image-frame').on("click", imageLink);
+                $('#upload').modal('hide');
+            });
+
+
         });
-        $(function () {
-            var dialog, form,
-              title = $("#title"),
-              url = $("#url"),
-              description = $("#description"),
-              genre = $("#genre"),
-              allFields = $([]).add(title).add(url).add(description).add(genre),
-              tips = $(".validateTips");
-
-            function updateTips(t) {
-                tips
-                  .text(t)
-                  .addClass("ui-state-highlight");
-                setTimeout(function () {
-                    tips.removeClass("ui-state-highlight", 1500);
-                }, 500);
-            }
-
-            function checkLength(o, n, min, max) {
-                if (o.val().length > max || o.val().length < min) {
-                    o.addClass("ui-state-error");
-                    updateTips("Length of " + n + " must be between " +
-                      min + " and " + max + ".");
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-
-            function checkRegexp(o, regexp, n) {
-                if (!(regexp.test(o.val()))) {
-                    o.addClass("ui-state-error");
-                    updateTips(n);
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-
-            function addUser() {
-                var valid = true;
-                allFields.removeClass("ui-state-error");
-
-                valid = valid && checkLength(title, "title", 3, 16);
-                valid = valid && checkLength(url, "url", 6, 80);
-                valid = valid && checkLength(description, "description", 0, 16);
-
-                valid = valid && checkRegexp(title, /^[a-z]([0-9a-z_\s])+$/i, "Title may consist of a-z, 0-9, underscores, spaces and must begin with a letter.");
-                valid = valid && checkRegexp(description,/^[a-z]([0-9a-z_\s])+$/i, "Description may consist of a-z, 0-9, underscores, spaces and must begin with a letter.");
-
-                if (valid) {
-                    $('main-content').append('                                                                                                          \
-                <div class="' + varG + ' col-xs-12 col-sm-6 col-md-4 col-lg-3 image-unit">                                                              \
-                                                                                                                                                        \
-                <div class="image-box">                                                                                                                 \
-                    <a class="remove-image" href="#">Delete</a>                                                                                         \
-                    <div>                                                                                                                               \
-                        <a href="../../Images/'+ varU + ' "><img class="image-frame" alt="' + varT + '" src="../../Images/' + varU + ' " /></a>         \
-                    </div>                                                                                                                              \
-                    <div class="title-box">                                                                                                             \
-                        <p>'+ varT + '</p>                                                                                                              \
-                        <p>'+ varG + '</p>                                                                                                              \
-                    </div>                                                                                                                              \
-                </div>                                                                                                                                  \
-                                                                                                                                                        \
-            </div>'
-                );
-                    dialog.dialog("close");
-                }
-                return valid;
-            }
-        });
-
     </script>
 
     
